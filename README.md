@@ -76,7 +76,39 @@ Al finalizar la instalación, es necesario agregar el directorio de instalación
 sudo nano /etc/profile.d/path.sh 
 ------------------------------------------------------------------------------------
 
-y pegar el contenido del path.sh adjunto (Cambiar el path en caso de que postgres no este instalado en /usr/local/pgsql)
+y pegar el contenido del path.sh adjunto (Cambiar el path en caso de que postgres no este instalado en /usr/local/pgsql). Finalmente actualizar el perfil bash ejecutando:
+
+sudo source /etc/profile.d/path.sh
+------------------------------------------------------------------------------------
+
+Para la instalación de psqlODBC ejecutar en el terminal:
+
+cd /usr/local/src/
+------------------------------------------------------------------------------------
+sudo wget https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-10.00.0000.tar.gz
+------------------------------------------------------------------------------------
+sudo tar xzf psqlodbc-10.00.0000.tar.gz
+------------------------------------------------------------------------------------
+cd psqlodbc-10.00.0000/
+------------------------------------------------------------------------------------
+sudo ./configure –help
+------------------------------------------------------------------------------------
+sudo ./configure –with-unixodbc
+------------------------------------------------------------------------------------
+sudo make
+------------------------------------------------------------------------------------
+sudo make install
+------------------------------------------------------------------------------------
+
+Para configurar ODBC establecer correctamente los valores para el usuario, contraseña (los
+cuales deben ser creados en la base de datos Postgres también) y postgres. Para ello ejecutar en el terminal 
+
+sudo nano /usr/local/etc/odbc.ini 
+------------------------------------------------------------------------------------
+
+y pegar todo el script que se encuentra en el documento adjunto odbc.ini, el mismo que contiene el username y password de un usuario en la base de datos de postgres. Entonces, para este caso se ha creado en postgres un usuario llamado ldap con password 1234, además de una base de datos denominda pg_ldap que contendra todos los elementos que leerá el OpenLdap.
+
+
 
 
 
