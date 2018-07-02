@@ -147,6 +147,8 @@ sudo nano slapd.conf
 
 Y realizar las modificaciones a los parámetros database, suffix, rootdn, rootpw, dbname, dbuser, dbpasswd a corde a la configuración del ODBC. Tal como esta el slapd.conf adjunto.
 
+Ir al directorio /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/ por terminal o GUI y reemplazar los archivos: backsql_create.sql, testdb_create.sql, testdb_metadata.sql por los adjunto en este tutorial. En el último archivo "testdb_metadata.sql" en la linea 56 tiene el directorio raiz "dc=example,dc=com", en caso de haberlo cambiado en las configuraciones del LDAP, modificarlo aqui caso contrario dejar como esta.  
+
 A continuación se debe crear la estructura de base de datos para LDAP. Esta estructura es necesaria para que LDAP funcione con SQL como backend. Para ello ingresar al directorio servers/slapd/back-sql/rdbms_depend/pgsql/ y crear la metadata que se utilizara como backend ejecutando el script SQL backsql_create.sql. Para ello en la terminal ejecutar como usuario postgres lo siguiente (el usuario postgres se crea cuando instala postgres, su clave no es la misma con la que entra a la base de datos, esta debe crearla como cualquier otro usuario de linux colocando en el terminal "passwd postgres"):
 
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
@@ -158,10 +160,82 @@ psql -d pg_ldap < testdb_create.sql
 psql -d pg_ldap < testdb_metadata.sql
 ------------------------------------------------------------------------------------
 
-Los errores arrojados por ambos scripts se deben a que intentan eliminar tablas que aún no existen (están pensados para limpiar una instalación preexistente). Simplemente ignorar estos errores.
+Los errores arrojados por ambos scripts se deben a que intentan eliminar tablas que aún no existen (están pensados para limpiar una instalación preexistente). Simplemente ignorar estos errores y continuar digitando desde el usuario postgres con el fin de dar permisos:
+
+psql -d pg_ldap
+------------------------------------------------------------------------------------
+grant all on ldap_attr_mappings,ldap_entries,ldap_entry_objclasses,ldap_oc_mappings,referrals,certs to ldap;
+------------------------------------------------------------------------------------
+grant all on ldap_attr_mappings_id_seq,ldap_entries_id_seq,ldap_oc_mappings_id_seq,referrals_id_seq to ldap;
+------------------------------------------------------------------------------------
+grant all on authors_docs,documents,institutes,persons,phones to ldap;
+------------------------------------------------------------------------------------
+grant all on documents_id_seq,institutes_id_seq,persons_id_seq,phones_id_seq to ldap;
+------------------------------------------------------------------------------------
+
+Con el fin de determinaar si toda la conexión LDAP-Postgres por medio de ODBC ha sido correcta se puede digitar en una nueva terminal:
+1) Para verificar conexion ODBC
+----------+------------------------+-----------+----------+-------------------------------------
+root@debian8:~# su - postgres
+postgres@debian8:~$ psql
+psql (10.0)
+Type "help" for help.
+
+postgres=# \c pg_ldap
+You are now connected to database "pg_ldap" as user "postgres".
+pg_ldap=# \dt+
+                              List of relations
+ Schema |         Name          | Type  |  Owner   |    Size    | Description 
+--------+-----------------------+-------+----------+------------+-------------
+ public | authors_docs          | table | postgres | 8192 bytes | 
+ public | certs                 | table | postgres | 16 kB      | 
+ public | documents             | table | postgres | 16 kB      | 
+ public | institutes            | table | postgres | 8192 bytes | 
+ public | ldap_attr_mappings    | table | postgres | 16 kB      | 
+ public | ldap_entries          | table | postgres | 8192 bytes | 
+ public | ldap_entry_objclasses | table | postgres | 8192 bytes | 
+ public | ldap_oc_mappings      | table | postgres | 16 kB      | 
+ public | persons               | table | postgres | 16 kB      | 
+ public | phones                | table | postgres | 8192 bytes | 
+ public | referrals             | table | postgres | 16 kB      | 
+(11 rows)
+
+pg_ldap=# \d persons
+                                     Table "public.persons"
+  Column  |          Type          | Collation | Nullable |               Default               
+----------+------------------------+-----------+----------+-------------------------------------
+ id       | integer                |           | not null | nextval('persons_id_seq'::regclass)
+ name     | character varying(255) |           | not null | 
+ surname  | character varying(255) |           | not null | 
+ password | character varying(64)  |           |          | 
+Indexes:
+    "persons_pkey" PRIMARY KEY, btree (id)
+
+pg_ldap=# select name from persons;
+    name    
+------------
+ Mitya
+ Torvlobnor
+ Akakiy
+(3 rows)
+
+pg_ldap=# \q
+postgres@debian8:~$ exit
+logout
+root@debian8:~#
+----------+------------------------+-----------+----------+-------------------------------------
 
 
 
 
 
+
+
+
+CABE DESTACAR QUE ESTE TUTORIAL HA SIDO REALIZADO EN BASE A LAS SIGUIENTES FUENTES CON ALGUNAS MODIFICACIONES DE MI PARTE:
+
+Conección LDAP con Postgres
+https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
+http://www.darold.net/projects/ldap_pg/HOWTO/x178.html
+https://github.com/openldap/openldap/tree/master/servers/slapd/back-sql/rdbms_depend/pgsql
 
