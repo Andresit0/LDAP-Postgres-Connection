@@ -113,9 +113,39 @@ Resta configurar el driver ODBC “Postgres”: Entonces después de insertar en
 sudo nano /usr/local/etc/odbcinst.ini 
 ------------------------------------------------------------------------------------
 
-pegar la información del archivo odbcinst.ini adjunto
+para finalmente pegar la información del archivo odbcinst.ini adjunto.
 
+# Configuración e Instalación de OpenLDAP
 
+Con la finalidad de instalar OpenLDAP ejecutar los siguientes comandos:
+
+cd /usr/local/src/
+------------------------------------------------------------------------------------
+wget https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-10.00.0000.tar.gz
+------------------------------------------------------------------------------------
+tar xzf psqlodbc-10.00.0000.tar.gz 
+------------------------------------------------------------------------------------
+cd psqlodbc-10.00.0000/
+------------------------------------------------------------------------------------
+./configure --help
+------------------------------------------------------------------------------------
+./configure --with-unixodbc
+------------------------------------------------------------------------------------
+make
+------------------------------------------------------------------------------------
+make install
+------------------------------------------------------------------------------------
+
+Para configurar OpenLDAP acceder al archivo slapd.conf y poner los datos solicitados como esta en el archivo adjunto. Para ello, primero ejecutar los comandos: 
+
+cd /usr/local/etc/openldap/
+------------------------------------------------------------------------------------
+sudo cp /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms depend/pgsql/slapd.conf .
+------------------------------------------------------------------------------------
+sudo nano slapd.conf
+------------------------------------------------------------------------------------
+
+Y realizar las modificaciones a los parámetros database, suffix, rootdn, rootpw, dbname, dbuser, dbpasswd a corde a la configuración del ODBC. Tal como esta el slapd.conf adjunto.
 
 
 
