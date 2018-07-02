@@ -55,13 +55,21 @@ sudo ln -fs /usr/lib/libldap r-2.4.so.2 /usr/local/lib/
 # Configuración e Instalación de ODBC
 
 Para la instalación de unixODBC ejecutar en el terminal:
+
 cd /usr/local/src/
+------------------------------------------------------------------------------------
 sudo wget http://www.unixodbc.org/unixODBC-2.3.4.tar.gz
+------------------------------------------------------------------------------------
 sudo tar xzf unixODBC-2.3.4.tar.gz
+------------------------------------------------------------------------------------
 cd unixODBC-2.3.4/
+------------------------------------------------------------------------------------
 sudo ./configure
+------------------------------------------------------------------------------------
 sudo make
+------------------------------------------------------------------------------------
 sudo make install
+------------------------------------------------------------------------------------
 
 Al finalizar la instalación, es necesario agregar el directorio de instalación bin de Postgres (en este caso /usr/local/pgsql/bin) a la variable de entorno PATH, y configurar correctamente la variable de entorno LD LIBRARY PATH. Entonces ejecutar en el terminal 
 
