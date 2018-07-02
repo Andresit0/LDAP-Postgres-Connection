@@ -108,6 +108,14 @@ sudo nano /usr/local/etc/odbc.ini
 
 y pegar todo el script que se encuentra en el documento adjunto odbc.ini, el mismo que contiene el username y password de un usuario en la base de datos de postgres. Entonces, para este caso se ha creado en postgres un usuario llamado ldap con password 1234, además de una base de datos denominda pg_ldap que contendra todos los elementos que leerá el OpenLdap.
 
+Resta configurar el driver ODBC “Postgres”: Entonces después de insertar en el terminal
+
+sudo nano /usr/local/etc/odbcinst.ini 
+------------------------------------------------------------------------------------
+
+pegar la información del archivo odbcinst.ini adjunto
+
+
 
 
 
