@@ -207,6 +207,10 @@ tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      
 Para obtener mayor información acercaa de esta conexión se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
 
 https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
+
 http://www.darold.net/projects/ldap_pg/HOWTO/x178.html
+
 https://github.com/openldap/openldap/tree/master/servers/slapd/back-sql/rdbms_depend/pgsql
+
+
 
