@@ -150,10 +150,12 @@ Y realizar las modificaciones a los parámetros database, suffix, rootdn, rootpw
 A continuación se debe crear la estructura de base de datos para LDAP. Esta estructura es necesaria para que LDAP funcione con SQL como backend. Para ello ingresar al directorio servers/slapd/back-sql/rdbms_depend/pgsql/ y crear la metadata que se utilizara como backend ejecutando el script SQL backsql_create.sql. Para ello en la terminal ejecutar como usuario postgres lo siguiente (el usuario postgres se crea cuando instala postgres, su clave no es la misma con la que entra a la base de datos, esta debe crearla como cualquier otro usuario de linux colocando en el terminal "passwd postgres"):
 
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
-
+------------------------------------------------------------------------------------
 psql -d pg_ldap < backsql_create.sql
 ------------------------------------------------------------------------------------
 psql -d pg_ldap < testdb_create.sql 
+------------------------------------------------------------------------------------
+psql -d pg_ldap < testdb_metadata.sql
 ------------------------------------------------------------------------------------
 
 Los errores arrojados por ambos scripts se deben a que intentan eliminar tablas que aún no existen (están pensados para limpiar una instalación preexistente). Simplemente ignorar estos errores.
