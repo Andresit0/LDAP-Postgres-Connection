@@ -40,9 +40,8 @@ sudo apt install libltdl-dev
 ------------------------------------------------------------------------------------
 
 connections on Unix domain socket ”/tmp/.s.PGSQL.5432”?
-Instalar postgres en: /usr/local/pgsql en caso de tenerlo en otro lado revisar el path al ejecutar en el terminal  
 
-sudo nano /etc/profile.d/path.sh y colocarlo correctamente
+Instalar postgres en: /usr/local/pgsql en caso de tenerlo en otro lado revisar el path y luego en el paso posterior donde se inserta en el terminal sudo nano /etc/profile.d/path.sh colocarlo correctamente
 ------------------------------------------------------------------------------------
 
 createdb: /usr/local/pgsql/lib/libssl.so.1.0.0: no version information available (required by
