@@ -174,67 +174,38 @@ grant all on documents_id_seq,institutes_id_seq,persons_id_seq,phones_id_seq to 
 ------------------------------------------------------------------------------------
 
 Con el fin de determinaar si toda la conexión LDAP-Postgres por medio de ODBC ha sido correcta se puede digitar en una nueva terminal:
-1) Para verificar conexion ODBC
-----------+------------------------+-----------+----------+-------------------------------------
-root@debian8:~# su - postgres
-postgres@debian8:~$ psql
-psql (10.0)
-Type "help" for help.
 
-postgres=# \c pg_ldap
-You are now connected to database "pg_ldap" as user "postgres".
-pg_ldap=# \dt+
-                              List of relations
- Schema |         Name          | Type  |  Owner   |    Size    | Description 
---------+-----------------------+-------+----------+------------+-------------
- public | authors_docs          | table | postgres | 8192 bytes | 
- public | certs                 | table | postgres | 16 kB      | 
- public | documents             | table | postgres | 16 kB      | 
- public | institutes            | table | postgres | 8192 bytes | 
- public | ldap_attr_mappings    | table | postgres | 16 kB      | 
- public | ldap_entries          | table | postgres | 8192 bytes | 
- public | ldap_entry_objclasses | table | postgres | 8192 bytes | 
- public | ldap_oc_mappings      | table | postgres | 16 kB      | 
- public | persons               | table | postgres | 16 kB      | 
- public | phones                | table | postgres | 8192 bytes | 
- public | referrals             | table | postgres | 16 kB      | 
-(11 rows)
+1) Para verificar conexion ODBC ejecutar en la terminal:
 
-pg_ldap=# \d persons
-                                     Table "public.persons"
-  Column  |          Type          | Collation | Nullable |               Default               
-----------+------------------------+-----------+----------+-------------------------------------
- id       | integer                |           | not null | nextval('persons_id_seq'::regclass)
- name     | character varying(255) |           | not null | 
- surname  | character varying(255) |           | not null | 
- password | character varying(64)  |           |          | 
-Indexes:
-    "persons_pkey" PRIMARY KEY, btree (id)
+isql -v PgSQL
+------------------------------------------------------------------------------------
+select name from persons;
+------------------------------------------------------------------------------------
 
-pg_ldap=# select name from persons;
-    name    
-------------
- Mitya
- Torvlobnor
- Akakiy
-(3 rows)
+Obteniendo como resultado una tabla vacía, acorde a los datos insertados en postgres a lo que ejecutamos anteriormente: psql -d pg_ldap < backsql_create.sql , psql -d pg_ldap < testdb_create.sql y psql -d pg_ldap < testdb_metadata.sql (por lo que también se debería verificar que se hayan creado tablas en nuestra base de datos "pg_ldap" creada anteriormente)
 
-pg_ldap=# \q
-postgres@debian8:~$ exit
-logout
-root@debian8:~#
-----------+------------------------+-----------+----------+-------------------------------------
+2) Verificación el funcionamiento del servidor LDAP ejecutar en la terminal:
 
+/usr/local/libexec/slapd
+------------------------------------------------------------------------------------
+ps aux | grep '[s]lapd'
+------------------------------------------------------------------------------------
 
+Obteniendo como resultado algo parecido a:
 
+root      3064  0.0  0.7 267528  8032 ?        Ssl  oct31   0:03 /usr/local/libexec/slapd
 
+y al ejecutar:
 
+netstat -tulpn | grep slapd
+------------------------------------------------------------------------------------
 
+se obtiene como respuesta el puerto utilizado, que generalmente es el 389 como se muestra a continuación:
 
+tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      3064/slapd
 
-CABE DESTACAR QUE ESTE TUTORIAL HA SIDO REALIZADO EN BASE A LAS SIGUIENTES FUENTES CON ALGUNAS MODIFICACIONES DE MI PARTE:
+Para obtener mayor información acercaa de esta conexión se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
 
-Conección LDAP con Postgres
 https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
 http://www.darold.net/projects/ldap_pg/HOWTO/x178.html
 https://github.com/openldap/openldap/tree/master/servers/slapd/back-sql/rdbms_depend/pgsql
