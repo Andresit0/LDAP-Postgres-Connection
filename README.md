@@ -244,8 +244,23 @@ sudo /usr/local/libexec/slapd
 ![Alt text](datos2.png "Abrir Conexión")
 
 Finalmente probar conexión y dar clic en finalizar
+
 ![Alt text](datos3.png "Abrir Conexión")
 
-4) Para crear grupos se da clic derecho en la raíz principal o sub-raíz y se escoge nueva entrada, además de seguir los pasos que se indican a continuación:   
+4) Para crear grupos se da clic derecho en la raíz principal(dc=example,dc=com) ubicada en DIT/Root DSE o sub-raíz y se escoge nueva entrada, además de seguir los pasos que se indican a continuación (tomar encuenta que no se pueden escoger todas las opciones que muestra el Apache Directory Studio, sólo las configuradas previamente en postgres, en caso de querer más visitar la página: http://www.darold.net/projects/ldap_pg/HOWTO/x178.html y hacer la configuración respectiva):
+
+![Alt text](grupo1.png "grupo1")
+
+![Alt text](grupo2.png "grupo2")
+
+![Alt text](grupo3.png "grupo3")
+
+![Alt text](grupo4.png "grupo4")
+
+![Alt text](grupo5.png "grupo5")
+
+
+
+
 
 
