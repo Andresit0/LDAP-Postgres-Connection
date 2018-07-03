@@ -235,6 +235,6 @@ sudo /usr/local/libexec/slapd
 ------------------------------------------------------------------------------------
 
 2) Hacer clic en nueva conexión
-![abrirConexion.jpg][3t] "[abrirConexion.jpg][3p]."
+![abrirConexion][3t] "[abrirConexion][3p]."
 ![Alt text](abrirConexion.jpg?raw=true "Title")
 
