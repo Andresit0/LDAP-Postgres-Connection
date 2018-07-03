@@ -184,7 +184,7 @@ select name from persons;
 
 Obteniendo como resultado una tabla vacía, acorde a los datos insertados en postgres a lo que ejecutamos anteriormente: psql -d pg_ldap < backsql_create.sql , psql -d pg_ldap < testdb_create.sql y psql -d pg_ldap < testdb_metadata.sql (por lo que también se debería verificar que se hayan creado tablas en nuestra base de datos "pg_ldap" creada anteriormente)
 
-2) Verificación el funcionamiento del servidor LDAP ejecutar en la terminal:
+2) Para la verificación del funcionamiento del servidor LDAP ejecutar en el terminal:
 
 /usr/local/libexec/slapd
 ------------------------------------------------------------------------------------
@@ -212,5 +212,29 @@ http://www.darold.net/projects/ldap_pg/HOWTO/x178.html
 
 https://github.com/openldap/openldap/tree/master/servers/slapd/back-sql/rdbms_depend/pgsql
 
+# Conexión con Apache Directory Studio (APS)
 
+Descargar el APS de la página 
+
+http://directory.apache.org/studio/
+------------------------------------------------------------------------------------
+
+descomprimir y ejecutarlo entrando a la carpeta desde el terminal con "./nombre_del_archivo.sh" en mi caso:
+
+./ApacheDirectoryStudio
+------------------------------------------------------------------------------------
+
+en caso de querer crear un acceso de directo del mismo recomiendo copiarlo en el home y utilizar la herramienta "Menu Editor"
+de la cual existen muchos tutoriales en el internet para aprender a usarla.
+
+Una vez abierto el mismo se crea la conexión deseada de la siguiente manera:
+
+1) Activar el denomio LDAP para ello ejecutar en el terminal:
+
+sudo /usr/local/libexec/slapd
+------------------------------------------------------------------------------------
+
+2) Hacer clic en nueva conexión
+
+![Alt text](abrirConexion.jpg?raw=true "Title")
 
