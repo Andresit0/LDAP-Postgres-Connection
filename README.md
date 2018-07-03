@@ -257,7 +257,23 @@ Finalmente probar conexión y dar clic en finalizar
 
 ![Alt text](grupo4.png "grupo4")
 
+Siguiendo estos pasos se puede crear subgrupos como se muestra a continuación:
+
 ![Alt text](grupo5.png "grupo5")
+
+Para crear el personal correspondiente a cada grupo se puede dar clic derecho al grupo en el que se insertarán las personas, escoger nueva entrada y colocar los siguientes datos.
+
+![Alt text](persona1.png "persona1")
+
+![Alt text](persona2.png "persona2")
+
+![Alt text](persona3.png "persona3")
+
+![Alt text](persona4.png "persona4")
+
+En caso de querer ponerle clave en la imagen "persona3" se observa un "+" alli se puede dar clic y escoger userPassword ó una vez terminado se puede escoger el usuario creado y luego en attribute description escoger nuevo atributo en donde aparecerá la siguiente imagen a la que dando clic en finalizar permitirá insertar la clave y escoger el tipo de cifrado.
+
+![Alt text](persona5.png "persona5")
 
 
 
