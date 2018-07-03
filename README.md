@@ -1,5 +1,11 @@
 # LDAP-Postgres-Connection
-Conección entre LDAP, Postgres, Node.js y Apache Directory Studio por medio de ODBC. Con ejemplo de creación de grupo y subgrupos y autentificación con Node.js (Este tutorial ha sido realizado en Linux Mint 18.1 por lo que en ubuntu 16.04 debería correr sin problema). 
+Conección entre LDAP, Postgres, Node.js y Apache Directory Studio por medio de ODBC. Con ejemplo de creación de grupo y subgrupos y autentificación con Node.js (Este tutorial ha sido realizado en Linux Mint 18.1 por lo que en ubuntu 16.04 debería correr sin problema). Entonces en este tutorial se realiza la siguiente arquitectura(sin tomar encuenta conexión jBPM):
+
+![Alt text](arquitectura.jpg "arquitectura")
+
+Y se crea la siguiente estructura en Apache Directory Studio
+
+![Alt text](persona6.png "persona6")
 
 Con la finalidad de no tener problemas durante las configuraciones correspondientes o en caso de tener uno de los siguientes errores se recomienda ver los guientes errores que se pueden dar con sus soluciones:
 ------------------------------------------------------------------------------------
