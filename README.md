@@ -275,7 +275,9 @@ En caso de querer ponerle clave en la imagen "persona3" se observa un "+" alli s
 
 ![Alt text](persona5.png "persona5")
 
+Con la finalidad de tener más personas se puede copiar la que ya tenemos y pegarla en el grupo que queremos, si es en el mismo grupo escogiendo la tercera opción se puede modificar los datos para la nueva persona. Y finalmente podemos obtener algo del siguiente tipo:
 
+![Alt text](persona6.png "persona6")
 
 
 
