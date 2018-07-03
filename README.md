@@ -237,3 +237,15 @@ sudo /usr/local/libexec/slapd
 2) Hacer clic en nueva conexión
 ![Alt text](abrirConexion.png "Abrir Conexión")
 
+3) Insertar los siguiente datos y dar clic en finalizar tomando en cuenta que la clave que insertamos es la que se configuro en el ODBC  es decir "secret"
+
+![Alt text](datos1.png "datos1")
+
+![Alt text](datos2.png "Abrir Conexión")
+
+Finalmente probar conexión y dar clic en finalizar
+![Alt text](datos3.png "Abrir Conexión")
+
+4) Para crear grupos se da clic derecho en la raíz principal o sub-raíz y se escoge nueva entrada, además de seguir los pasos que se indican a continuación:   
+
+
