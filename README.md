@@ -210,7 +210,10 @@ se obtiene como respuesta el puerto utilizado, que generalmente es el 389 como s
 
 tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      3064/slapd
 
-Para obtener mayor información acercaa de esta conexión se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
+Extra: Como se había indicado no se puede acceder a todos los atributos que tiene el LDAP con las bases de datos que vienen por defecto. Esto es debido a que hay que crear los scrips correspondientes que guarden en la base de datos estos atributos. En esta sección se indicará por tal motivo como insertar el atributo email, para que las personas que siguen este tutorial tengan idea de como hacer para agregar otro atributos.
+
+
+Para obtener mayor información acerca de esta conexión se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
 
 https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
 
