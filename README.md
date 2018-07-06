@@ -210,10 +210,24 @@ se obtiene como respuesta el puerto utilizado, que generalmente es el 389 como s
 
 tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      3064/slapd
 
-Extra: Como se había indicado no se puede acceder a todos los atributos que tiene el LDAP con las bases de datos que vienen por defecto. Esto es debido a que hay que crear los scrips correspondientes que guarden en la base de datos estos atributos. En esta sección se indicará por tal motivo como insertar el atributo email, para que las personas que siguen este tutorial tengan idea de como hacer para agregar otro atributos.
+Extra: Como se había indicado no se puede acceder a todos los atributos que tiene LDAP como en el caso de las bases de datos que vienen por defecto. Esto es debido a que hay que crear los scrips correspondientes que guarden en la base de datos estos atributos. En esta sección se indicará por tal motivo como insertar el atributo mail, para que las personas que siguen este tutorial tengan idea de como hacer para agregar otro atributos. Para ello solo deben ejecutar el siguiente script llamado insert_mail.sql el cual se encuentra adjunto y se lo recomienda pegar y ejecutar desde la dirección: cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/ , con el fin de que quede guardado junto a los ya ejecutados.
 
+![Alt text](insercionMail.png "insercionMail")
 
-Para obtener mayor información acerca de esta conexión se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
+Para ejecutarlo:
+
+su - postgres
+-----------------------------------------------------------------------------------
+
+cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
+-----------------------------------------------------------------------------------
+
+psql -d pg_ldap < backsql_create.sql
+-----------------------------------------------------------------------------------
+
+Con esto ya solo queda ir al Apache Directory Studio agregar un atributo seleccionar mail e insertar el mismo,  tomar en cuenta que en el script ejecutado se puso el mail como unique por lo que cuando se intenta grabar un mail ya existente desaparece el atributo que se esta tratando repetir en el Apache Directory Studio.
+
+Para obtener mayor información acerca de esta conexión (Postgres LDAP) se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
 
 https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
 
