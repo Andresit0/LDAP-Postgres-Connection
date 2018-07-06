@@ -210,7 +210,7 @@ se obtiene como respuesta el puerto utilizado, que generalmente es el 389 como s
 
 tcp        0      0 0.0.0.0:389             0.0.0.0:*               LISTEN      3064/slapd
 
-Extra: Como se había indicado no se puede acceder a todos los atributos que tiene LDAP como en el caso de las bases de datos que vienen por defecto. Esto es debido a que hay que crear los scrips correspondientes que guarden en la base de datos estos atributos. En esta sección se indicará por tal motivo como insertar el atributo mail, para que las personas que siguen este tutorial tengan idea de como hacer para agregar otro atributos. Para ello solo deben ejecutar el siguiente script llamado insert_mail.sql el cual se encuentra adjunto y se lo recomienda pegar y ejecutar desde la dirección: cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/ , con el fin de que quede guardado junto a los ya ejecutados.
+Extra: Como se había indicado no se puede acceder a todos los atributos que tiene LDAP como en el caso de las bases de datos que vienen por defecto. Esto es debido a que hay que crear los scrips correspondientes que guarden en la base de datos estos atributos. En esta sección se indicará por tal motivo como insertar el atributo mail, para que las personas que siguen este tutorial tengan idea de como hacer para agregar otros atributos. Para ello solo deben ejecutar el siguiente script llamado insert_mail.sql el cual se encuentra adjunto y se lo recomienda pegar y ejecutar desde la dirección: cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/ , con el fin de que quede guardado junto a los ya ejecutados.
 
 ![Alt text](insercionMail.png "insercionMail")
 
