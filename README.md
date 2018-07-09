@@ -302,6 +302,27 @@ Con la finalidad de tener más personas se puede copiar la que ya tenemos y pega
 
 ![Alt text](persona6.png "persona6")
 
+# CONFIGURACIÓN DEL PASSWORD
+
+Con la finalidad de quitar el password en texto plano insertado anteriormente en slapd.conf, se puede relizar lo siguiente para la protección del mismo, Tomando en cuenta que entre los formatos aceptados tenemos SHA, SSHA, MD5 (estos se deberian por tanto utilizar cuando se insertan claves en el Apache Directory Studio) podemos hacer los siguiente:
+
+1) Obtener el Hash deseado:
+
+slappasswd -h {SSHA}
+---------------------------------------------------------------------------
+
+con esto pedira password y devolverá el mismo hasheado ej: {SSHA}3GkEUmDEWVtc...., el cuál usaremos a continuación:
+
+2) Abrir el archivo slapd.conf y pegar el hash obtenido en la variable rootpw como se muestra a continuación:
+
+sudo nano /usr/local/etc/openldap/slapd.conf
+---------------------------------------------------------------------------
+
+rootpw          {SSHA}3GkEUmDEWVtc....
+---------------------------------------------------------------------------
+
+3) Reiniciar el LDAP, en caso de que no funcione el código dado, al reiniciar la computadora e iniciar el LDAP ya estará funcionando la nueva clave insertada con el código hash. Si utilizaron una diferente a "secret" q teniamos, cambiar por la nueva en el Apache Directory Studio también caso contrario dejar todo como esta.
+
 
 
 
