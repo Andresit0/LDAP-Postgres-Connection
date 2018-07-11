@@ -323,6 +323,17 @@ rootpw          {SSHA}3GkEUmDEWVtc....
 
 3) Reiniciar el LDAP, en caso de que no funcione el código dado, al reiniciar la computadora e iniciar el LDAP ya estará funcionando la nueva clave insertada con el código hash. Si utilizaron una diferente a "secret" q teniamos, cambiar por la nueva en el Apache Directory Studio también caso contrario dejar todo como esta.
 
+Tomar encuenta que hasta aquí se ha cifrado contraseña del servidor y anteriormente se explico como poner contraseña a un usuario dentro de un grupo, el cuál debería tener un cifrado que pueda ser admitido por LDAP. Por tanto, se debe tomar en cuenta que en caso de querer tener una red segura aún quedaría por configurar SSL/TLS con LDAP ya que hasta el momento sólo se tiene cifrado claves y lo demás esta viajando en texto plano.
+
+# CONEXION ENTRE NODE Y LDAP
+
+Un ejemplo de conexión de OpenLDAP con Node.js se lo puede hacer mediante ldapjs como se muestra en el siguiente script que muestra ejemplo del backend de un login el cual esta adjunto como "ldapLogin.js" y puede correrse escribiendo en el terminal con "node ldapLogin.js" tomando encuenta que deben modificar la parte correspondiente a "username" y "password" y que el ldap debe estar encendido. Además el mismo indica(si lo abren), como utilizar un diferente tipo de cifrado.
+
+![Alt text](ldapLogin.png "ldapLogin")
+
+Además la unión del backend con un frontend de Node.js se muestra en la carpeta comprimida "node-login-LDAP.tar.gz" la cual contiene en views la vista de un login hecho con boostrap (el cual ha sido descargado y se le ha hecho muy pocas modificaciones), además en su archivo README contiene como ejecutarlo. Tomar encuenta que esta carpeta muestra como se podría realizar la connexión con node como frontend sin embargo aqui las claves ya no se estan cifradas, si no viajando en texto plano como el resto de archivos por no tener un SSL configurado.   
+
+
 
 
 
