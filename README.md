@@ -331,7 +331,7 @@ Un ejemplo de conexión de OpenLDAP con Node.js se lo puede hacer mediante ldapj
 
 ![Alt text](ldapLogin.png "ldapLogin")
 
-Además la unión del backend con un frontend de Node.js se muestra en la carpeta comprimida "node-login-LDAP.tar.gz" la cual contiene en views la vista de un login hecho con boostrap (el cual ha sido descargado y se le ha hecho muy pocas modificaciones), además en su archivo README contiene como ejecutarlo. Tomar encuenta que esta carpeta muestra como se podría realizar la connexión con node como frontend sin embargo aqui las claves ya no se estan cifradas, si no viajando en texto plano como el resto de archivos por no tener un SSL configurado.   
+Además la unión del backend con un frontend de Node.js se muestra en la carpeta comprimida "node-login-LDAP.tar.gz" la cual contiene en views la vista de un login hecho con boostrap (el cual ha sido descargado y se le ha hecho muy pocas modificaciones), además en su archivo README contiene como ejecutarlo. Tomar encuenta que esta carpeta muestra como se podría realizar la conexión con node como frontend sin embargo aqui las claves ya no se estan cifradas, si no viajando en texto plano como el resto de archivos por no tener un SSL configurado.   
 
 
 
