@@ -104,9 +104,9 @@ sudo tar xzf psqlodbc-10.00.0000.tar.gz
 ------------------------------------------------------------------------------------
 cd psqlodbc-10.00.0000/
 ------------------------------------------------------------------------------------
-sudo ./configure –help
+sudo ./configure -help
 ------------------------------------------------------------------------------------
-sudo ./configure –with-unixodbc
+sudo ./configure -with-unixodbc
 ------------------------------------------------------------------------------------
 sudo make
 ------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ Para configurar OpenLDAP acceder al archivo slapd.conf y poner los datos solicit
 
 cd /usr/local/etc/openldap/
 ------------------------------------------------------------------------------------
-sudo cp /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms depend/pgsql/slapd.conf .
+sudo cp /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/slapd.conf .
 ------------------------------------------------------------------------------------
 sudo nano slapd.conf
 ------------------------------------------------------------------------------------
@@ -184,6 +184,8 @@ Ir al directorio /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_dep
 
 A continuación se debe crear la estructura de base de datos para LDAP. Esta estructura es necesaria para que LDAP funcione con SQL como backend. Para ello ingresar al directorio servers/slapd/back-sql/rdbms_depend/pgsql/ y crear la metadata que se utilizara como backend ejecutando el script SQL backsql_create.sql. Para ello en la terminal ejecutar como usuario postgres lo siguiente (el usuario postgres se crea cuando instala postgres, su clave no es la misma con la que entra a la base de datos, esta debe crearla como cualquier otro usuario de linux colocando en el terminal "passwd postgres"):
 
+su - postgres
+------------------------------------------------------------------------------------
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
 ------------------------------------------------------------------------------------
 psql -d pg_ldap < backsql_create.sql
