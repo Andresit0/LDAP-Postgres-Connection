@@ -186,6 +186,10 @@ A continuación se debe crear la estructura de base de datos para LDAP. Esta est
 
 su - postgres
 ------------------------------------------------------------------------------------
+createdb pg_ldap
+------------------------------------------------------------------------------------
+createuser -D -R -S -W ldap
+------------------------------------------------------------------------------------
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
 ------------------------------------------------------------------------------------
 psql -d pg_ldap < backsql_create.sql
