@@ -11,7 +11,9 @@ Con la finalidad de no tener problemas durante las configuraciones correspondien
 ------------------------------------------------------------------------------------
 
 configure: error: C compiler cannot create executables
+
 sudo apt-get install g++
+------------------------------------------------------------------------------------
 
 configure: error: readline library not found
 If you have readline already installed, see config.log for details on the
@@ -87,6 +89,11 @@ y pegar el contenido del path.sh adjunto (Cambiar el path en caso de que postgre
 sudo source /etc/profile.d/path.sh
 ------------------------------------------------------------------------------------
 
+En caso de que no funcione el código anterior se puede ejecutar:
+
+sudo -s source /etc/profile.d/path.sh
+------------------------------------------------------------------------------------
+
 Para la instalación de psqlODBC ejecutar en el terminal:
 
 cd /usr/local/src/
@@ -127,20 +134,40 @@ Con la finalidad de instalar OpenLDAP ejecutar los siguientes comandos:
 
 cd /usr/local/src/
 ------------------------------------------------------------------------------------
-wget https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-10.00.0000.tar.gz
+
+sudo wget http://gpl.savoirfairelinux.net/pub/mirrors/openldap/openldap-release/openldap-2.4.45.tgz
 ------------------------------------------------------------------------------------
-tar xzf psqlodbc-10.00.0000.tar.gz 
+
+sudo tar xzf openldap-2.4.45.tgz
 ------------------------------------------------------------------------------------
-cd psqlodbc-10.00.0000/
+
+sudo chown -R root:staff openldap-2.4.45
 ------------------------------------------------------------------------------------
-./configure --help
+
+cd openldap-2.4.45/
 ------------------------------------------------------------------------------------
-./configure --with-unixodbc
+
+sudo less INSTALL
 ------------------------------------------------------------------------------------
-make
+
+sudo ./configure --help
 ------------------------------------------------------------------------------------
-make install
+
+sudo apt-get install libtool libssl-dev
 ------------------------------------------------------------------------------------
+
+sudo ./configure --enable-crypt --enable-modules --enable-rlookups --enable-sql=yes --with-tls=openssl --without-cyrus-sasl --disable-bdb --disable-hdb --disable-ipv6
+------------------------------------------------------------------------------------
+
+sudo make depend
+------------------------------------------------------------------------------------
+
+sudo make
+------------------------------------------------------------------------------------
+
+sudo make install
+------------------------------------------------------------------------------------
+
 
 Para configurar OpenLDAP acceder al archivo slapd.conf y poner los datos solicitados como esta en el archivo adjunto. Para ello, primero ejecutar los comandos: 
 
