@@ -216,7 +216,7 @@ Con el fin de determinaar si toda la conexión LDAP-Postgres por medio de ODBC h
 
 1) Para verificar conexion ODBC ejecutar en la terminal:
 
-psql -v PgSQL
+isql -v PgSQL
 ------------------------------------------------------------------------------------
 select name from persons;
 ------------------------------------------------------------------------------------
