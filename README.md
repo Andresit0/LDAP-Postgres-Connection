@@ -190,6 +190,9 @@ createdb pg_ldap
 ------------------------------------------------------------------------------------
 createuser -D -R -S -W ldap
 ------------------------------------------------------------------------------------
+
+Ir al pgadmin4 y colocar al usuario ldap la clave 1234 y dar todos los permisos deseados. luego conntinuar Con:
+
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
 ------------------------------------------------------------------------------------
 psql -d pg_ldap < backsql_create.sql
