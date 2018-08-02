@@ -220,9 +220,15 @@ Con el fin de determinaar si toda la conexión LDAP-Postgres por medio de ODBC h
 1) Para verificar conexion ODBC ejecutar en la terminal:
 
 isql -v PgSQL
-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
 select name from persons;
 ------------------------------------------------------------------------------------
+
+En caso de haber tenido problema al ejecutar isql -v PgSQL (isql: error while loading shared libraries: libodbc.so.2: cannot open shared object file: No such file or directory) ejecutar en el terminal y volver al paso del que se ha hablado: 
+
+sudo apt-get install libodbc1
+--------------------------------------------------
 
 Obteniendo como resultado una tabla vacía, acorde a los datos insertados en postgres a lo que ejecutamos anteriormente: psql -d pg_ldap < backsql_create.sql , psql -d pg_ldap < testdb_create.sql y psql -d pg_ldap < testdb_metadata.sql (por lo que también se debería verificar que se hayan creado tablas en nuestra base de datos "pg_ldap" creada anteriormente)
 
