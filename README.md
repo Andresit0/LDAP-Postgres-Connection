@@ -234,9 +234,9 @@ Obteniendo como resultado una tabla vacía, acorde a los datos insertados en pos
 
 2) Para la verificación del funcionamiento del servidor LDAP ejecutar en el terminal:
 
-/usr/local/libexec/slapd
+sudo /usr/local/libexec/slapd
 ------------------------------------------------------------------------------------
-ps aux | grep '[s]lapd'
+sudo ps aux | grep '[s]lapd'
 ------------------------------------------------------------------------------------
 
 Obteniendo como resultado algo parecido a:
@@ -245,7 +245,7 @@ root      3064  0.0  0.7 267528  8032 ?        Ssl  oct31   0:03 /usr/local/libe
 
 y al ejecutar:
 
-netstat -tulpn | grep slapd
+sudo netstat -tulpn | grep slapd
 ------------------------------------------------------------------------------------
 
 se obtiene como respuesta el puerto utilizado, que generalmente es el 389 como se muestra a continuación:
