@@ -342,6 +342,8 @@ Para obtener mayor información acerca de esta conexión (Postgres LDAP) se pued
 
 https://www.linuxito.com/gnu-linux/nivel-alto/977-compilar-e-instalar-openldap-con-postgresql-como-backend
 
+https://www.linuxito.com/gnu-linux/nivel-medio/987-instalando-un-script-de-inicio-para-mi-servidor-openldap
+
 http://www.darold.net/projects/ldap_pg/HOWTO/x178.html
 
 https://github.com/openldap/openldap/tree/master/servers/slapd/back-sql/rdbms_depend/pgsql
