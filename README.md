@@ -264,10 +264,79 @@ su - postgres
 cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
 -----------------------------------------------------------------------------------
 
-psql -d pg_ldap < backsql_create.sql
+psql -d pg_ldap < insert_mail.sql
 -----------------------------------------------------------------------------------
 
-Con esto ya solo queda ir al Apache Directory Studio agregar un atributo seleccionar mail e insertar el mismo,  tomar en cuenta que en el script ejecutado se puso el mail como unique por lo que cuando se intenta grabar un mail ya existente desaparece el atributo que se esta tratando repetir en el Apache Directory Studio.
+Con esto ya solo queda reiniciar el servidor apagando el CPU ir al Apache Directory Studio agregar un atributo seleccionar mail e insertar el mismo,  tomar en cuenta que en el script ejecutado se puso el mail como unique por lo que cuando se intenta grabar un mail ya existente desaparece el atributo que se esta tratando repetir en el Apache Directory Studio.
+
+Para reiniciar el servidor sin necesidad de apagar el equipo lo que se debe hacer es:
+
+cd /usr/local/etc/openldap/
+-----------------------------------------------------------------------------------
+
+wget https://raw.githubusercontent.com/linuxitux/scripts/master/Devuan/init/slapd-postgres
+-----------------------------------------------------------------------------------
+
+mv slapd-postgres slapd
+-----------------------------------------------------------------------------------
+
+ln -s /usr/local/etc/openldap/slapd /etc/init.d/slapd
+-----------------------------------------------------------------------------------
+
+update-rc.d slapd defaults
+-----------------------------------------------------------------------------------
+
+Corregir el error obtenido al ejecutar “update-rc.d slapd defaults” (Error: insserv: script slapd is not an executable regular file, skipped!) con: chmod +x /etc/init.d/slapd
+
+Si no aparece el error actualizar con:
+
+    sudo apt-get update
+    sudo apt-get upgrade
+    
+Y regresar a ejecutar “update-rc.d slapd defaults” y luego “chmod +x /etc/init.d/slapd”
+
+
+useradd -s /bin/bash ldap
+-----------------------------------------------------------------------------------
+
+mkdir /home/ldap
+-----------------------------------------------------------------------------------
+
+chown -R ldap:ldap /home/ldap
+-----------------------------------------------------------------------------------
+
+chown -R ldap:ldap /usr/local/etc/openldap
+-----------------------------------------------------------------------------------
+
+cd /usr/local/var/run/
+-----------------------------------------------------------------------------------
+
+mkdir openldap
+-----------------------------------------------------------------------------------
+
+chown ldap:ldap openldap/
+-----------------------------------------------------------------------------------
+
+nano /usr/local/etc/openldap/slapd.conf
+-----------------------------------------------------------------------------------
+
+Se deben modificar las variables pidfile y argsfile:
+
+pidfile         /usr/local/var/run/openldap/slapd.pid
+-----------------------------------------------------------------------------------
+
+argsfile        /usr/local/var/run/openldap/slapd.args
+-----------------------------------------------------------------------------------
+
+Para probar el funcionamiento ejecutar:
+
+service slapd
+-----------------------------------------------------------------------------------
+
+service slapd start
+-----------------------------------------------------------------------------------
+
+    Si aparece el error al correr “service slapd start” ejecutar “/etc/default/slapd” y editar colocando “/usr/local/etc/openldap/slapd.conf” en la dirección y como nombre “ldap”
 
 Para obtener mayor información acerca de esta conexión (Postgres LDAP) se pueden visitar los siguientes links, que me ayudaron a hacer este tutorial sin haber tenido nada de conocimiento:
 
