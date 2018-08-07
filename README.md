@@ -278,7 +278,29 @@ grant all on mails_id_seq to ldap;
 
 Con esto ya solo queda reiniciar el servidor apagando el CPU ir al Apache Directory Studio agregar un atributo seleccionar mail e insertar el mismo,  tomar en cuenta que en el script ejecutado se puso el mail como unique por lo que cuando se intenta grabar un mail ya existente desaparece el atributo que se esta tratando repetir en el Apache Directory Studio.
 
-Para reiniciar el servidor sin necesidad de apagar el equipo lo que se debe hacer es:
+Con la finalidad de seguir el tutorial del https://github.com/Andresit0/LDAP-JBPM-Postgres-Connection.git que indica  la CONFIGURACION DE ADMINISTRACIÓN DE USARIOS DE LDAP Y JBPM DESDE APACHE DIRECTORY STUDIO vamos a agregar la descripcion también por lo que se debe pegar en la carpeta "cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/" el archivo "insert_description.sql" adjunto.
+
+su - postgres
+-----------------------------------------------------------------------------------
+
+cd /usr/local/src/openldap-2.4.45/servers/slapd/back-sql/rdbms_depend/pgsql/
+-----------------------------------------------------------------------------------
+
+psql -d pg_ldap < insert_description.sql
+-----------------------------------------------------------------------------------
+
+psql -d pg_ldap
+-----------------------------------------------------------------------------------
+
+grant all on descriptions to ldap;
+-----------------------------------------------------------------------------------
+
+grant all on descriptions_id_seq to ldap;
+-----------------------------------------------------------------------------------
+
+Reiniciar el LDAP y ADEMÁS ENTRAR A POSTGRES y darle al usuario "ldap" todos los permisos;
+
+Para reiniciar el servidor sin necesidad de apagar el equipo lo que se debe hacer es (tomando en cuenta que en debian 9.5 no salen los errores y aun no se como logre hacer funcionar. Pero linux mint corre exactamente así):
 
 cd /usr/local/etc/openldap/
 -----------------------------------------------------------------------------------
