@@ -4,7 +4,7 @@ drop table descriptions;
 drop sequence descriptions_id_seq;
 create table descriptions (
 	id serial not null primary key,
-	description varchar(255) not null unique,
+	description varchar(255) not null,
 	pers_id int not null
 );
 
